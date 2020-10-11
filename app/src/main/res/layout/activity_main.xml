@@ -12,9 +12,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginTop="32dp"
+        android:fontFamily="cursive"
         android:text="Base"
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,9 +24,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:fontFamily="casual"
         android:text="15%"
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/tvBaseLabel"
         app:layout_constraintTop_toBottomOf="@+id/tvBaseLabel" />
@@ -35,9 +37,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
+        android:fontFamily="cursive"
         android:text="Tip"
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/tvTipPercent"
         app:layout_constraintTop_toBottomOf="@+id/tvTipPercent" />
 
@@ -46,23 +49,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:fontFamily="cursive"
         android:text="Total"
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="@+id/tvTipLabel"
         app:layout_constraintTop_toBottomOf="@+id/tvTipLabel" />
 
     <EditText
         android:id="@+id/etBase"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="248dp"
+        android:layout_height="61dp"
         android:layout_marginStart="32dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
         android:ems="8"
+        android:fontFamily="casual"
         android:inputType="numberDecimal"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@id/tvBaseLabel"
-        app:layout_constraintStart_toEndOf="@+id/tvBaseLabel" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tvBaseLabel"
+        tools:text="15" />
 
     <SeekBar
         android:id="@+id/seekBarTip"
@@ -90,7 +99,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:fontFamily="casual"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/tvTipLabel"
         app:layout_constraintStart_toEndOf="@+id/tvTipLabel"
         app:layout_constraintTop_toTopOf="@+id/tvTipLabel"
@@ -101,11 +112,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:fontFamily="casual"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/tvTotal"
         app:layout_constraintStart_toEndOf="@+id/tvTotal"
         app:layout_constraintTop_toTopOf="@+id/tvTotal"
         tools:text="3.78" />
+
+
 
 <!--Footer view-->
     <TextView
@@ -122,5 +137,52 @@
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent" />
 
+<!--    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton-->
+<!--        android:id="@+id/saveButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        android:accessibilityLiveRegion="polite"-->
+<!--        android:clickable="true"-->
+<!--        android:fadingEdge="vertical"-->
+<!--    -->
+<!--        android:text="Save"-->
+<!--        app:srcCompat="@android:drawable/alert_dark_frame"-->
+<!--        app:elevation="10dp"-->
+<!--        app:fabSize="normal"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/etBase"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/etBase"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvTotalAmount"-->
+<!--     />-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        android:layout_marginTop="30dp"
+        android:clickable="true"
+        android:contentDescription="save_button"
+        android:text="save_button"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="@+id/etBase"
+        app:layout_constraintStart_toEndOf="@+id/etBase"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalAmount"
+        app:srcCompat="@drawable/ic_baseline_add_48" />
+
+    <Button
+        android:id="@+id/historyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:fontFamily="cursive"
+        android:text="Tip History"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintCircleRadius="@dimen/cardview_default_radius"
+        app:layout_constraintEnd_toEndOf="@+id/saveButton"
+        app:layout_constraintTop_toBottomOf="@+id/saveButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,17 +1,22 @@
 package edu.stanford.gaborc.tippy
 
 import android.animation.ArgbEvaluator
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.SeekBar
+import android.content.Intent
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.File
+import java.io.FileOutputStream
 
 private const val TAG = "MainActivity"
 private const val INITIAL_TIP_PERCENT = 15
+public const val SAVED_TIPS_FILENAME = "saved_tips"
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +25,21 @@ class MainActivity : AppCompatActivity() {
         seekBarTip.progress = INITIAL_TIP_PERCENT
         tvTipPercent.text = "$INITIAL_TIP_PERCENT%"
         updateTipDescription(INITIAL_TIP_PERCENT)
+
+        saveButton.setOnClickListener() {
+            val contents = tvTipAmount.text.toString()
+            if (!contents.isEmpty()) {
+                val file = File(this.filesDir, SAVED_TIPS_FILENAME)
+                FileOutputStream(file, true).bufferedWriter().use {
+                    it.write("$contents\n")
+                }
+            }
+        }
+
+        historyButton.setOnClickListener(){
+            val i = Intent(this@MainActivity, savedTipsActivity::class.java)
+            startActivity(i)
+        }
 
         seekBarTip.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
